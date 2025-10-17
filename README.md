@@ -1,2 +1,7 @@
 ![full page image](https://github.com/HaniCarrot/Testing/blob/main/Full%20Page%20Image.jpg)
 ![left tall](https://github.com/HaniCarrot/Testing/blob/main/Left%20Tall.webp)
+![right bottom](https://github.com/HaniCarrot/Testing/blob/main/Right%20Bottom.webp)
+![right top](https://github.com/HaniCarrot/Testing/blob/main/Right%20Top.webp)
+![title](https://github.com/HaniCarrot/Testing/blob/main/Title.jpg)
+![biography](https://github.com/HaniCarrot/Testing/blob/main/artist%20biography.png)
+![contact](https://github.com/HaniCarrot/Testing/blob/main/contact.png)
