@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah Powell</title>
+
+  <style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #F5EFE6;
+      color: #111;         
+      line-height: 1.5;      
+    }
+
+
+  /*1st-------------------------------*/
+
+
+    .first-page {
+      display: flex;
+      align-items: stretch;
+      min-height: 100vh;
+    }
+
+     .left-panel {
+      flex: 0 0 clamp(40%, 45%, 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5vw;
+      gap: 2vw;
+    }
+
+    .name-heading {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(48px, 7vw, 96px); 
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0;
+      color: #000;
+    }
+
+    .portfolio-item {
+      display: flex;
+      align-items: center;
+      color: #000;
+    }
+
+    .portfolio-icon {
+      font-size: clamp(40px, 6vw, 80px);
+      color: #6D94C5;
+      margin-top: 1vw;
+      margin-right: 14px;
+    }
+
+    .portfolio-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .portfolio-text .regular {
+      font-size: clamp(14px, 1.5vw, 18px);
+    }
+
+    .portfolio-text .bold {
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 700;
+    }
+
+    .square-btn {
+      border: 1px solid #000;
+      background-color: transparent;
+      font-weight: bold;
+      font-size: clamp(10px, 1.2vw, 14px);
+      padding: 6px 18px;
+      text-transform: uppercase;
+      border-radius: 0;
+      color: #000;
+      width: fit-content;
+      margin-top: 1em;
+    }
+
+    .square-btn:hover {
+      color: #000;
+      border-color: #6D94C5;
+      border-width: 1px;
+    }
+
+    .right-panel {
+      flex: 1;
+      display: flex;
+    }
+
+    .right-panel img {
+      width: 100%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
+    }
+
+  /*2nd-------------------------------*/
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 4rem 8rem;
+      gap: 4rem;
+    }
+
+    .text-biography {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-biography h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .text-biography strong {
+      font-weight: 700;
+    }
+
+    .text-biography p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: auto;
+    }
+
+    .asterisk {
+      font-size: 2rem;
+      color: #c49b63;
+      margin-top: 4rem;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .image-section img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    /*3rd-------------------------------*/
+
+    .third-page {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      background-color: #F5EFE6;
+      display: grid;
+      place-items: center;
+      padding: 5vw 3vw;
+    }
+
+    /* layout */
+    .third-wrapper{
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 0.9fr; /* left / middle / right text */
+      grid-template-rows: auto auto;          /* two rows for middle images */
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* cards / images */
+    .card{ border-radius: 8px; overflow: hidden; transition: transform .25s ease; }
+    .card:hover{ transform: translateY(-3px); }
+
+    .card img{
+      width: 100%; height: 100%; display: block; object-fit: cover;
+      aspect-ratio: 3/4;              /* default portrait */
+    }
+
+    /* positions in grid */
+    .third-large{ grid-column: 1 / 2; grid-row: 1 / 3; }  /* tall, spans both rows */
+    .third-mid-top{ grid-column: 2 / 3; grid-row: 1 / 2; }
+    .third-mid-bottom{ grid-column: 2 / 3; grid-row: 2 / 3; }
+
+    .third-text{
+      grid-column: 3 / 4; grid-row: 1 / 3;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+
+    .third-mid-top img,
+    .third-mid-bottom img{ aspect-ratio: 1/1; } /* squares */
+
+    .third-text h2{
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.15;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .third-text ul{
+      list-style:none; margin:12px 0 0; padding:0; color:#666; font-size:0.95rem;
+    }
+    .third-text li{ margin:2px 0; }
+
+    /*4th-------------------------------*/
+
+    .fourth-page{
+      position: relative;
+      min-height: 100vh;        /* fills the viewport like your other pages */
+      display: grid;            /* lets us place the quote neatly */
+    }
+
+    .fourth-img{
+      position: absolute;
+      inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fourth-quote{
+      position: relative;       /* sits above the image and overlays */
+      z-index: 2;
+      color: #fff;
+      max-width: 28ch;          /* readable measure */
+      padding: clamp(16px, 4vw, 48px);
+      align-self: start;        /* top of the grid */
+      justify-self: start;      /* left of the grid */
+      margin-top: clamp(24px, 8vh, 80px);
+      text-shadow: 0 1px 3px rgba(0,0,0,.35);
+    }
+
+    .fourth-quote p{
+      font-size: clamp(20px, 3vw, 32px);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .fourth-quote footer{
+      margin-top: 0.8rem;
+      font-size: clamp(12px, 1vw, 18px);
+      letter-spacing: 0.03em;
+      opacity: 0.9;
+    }
+
+    .fourth-page::before{
+      content:"";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.18) 22%, rgba(0,0,0,0) 45%);
+      z-index: 1;               /* below text, above the image */
+      pointer-events: none;
+    }
+
+    /*5th-------------------------------*/
+
+    .fifth-page{
+      position: relative;
+      min-height: 100vh;
+      background: #F5EFE6;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr; /* image / card */
+      align-items: center;
+      gap: clamp(16px, 3vw, 32px);
+      padding: clamp(12px, 2vw, 24px);
+      overflow: hidden;
+    }
+
+    /* Full-bleed image on the left */
+    .fifth-img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      grid-column: 1 / 2;
+      border-radius: 6px;
+    }
+
+    /* The card on the right */
+    .fifth-card{
+      grid-column: 2 / 3;
+      background: #F8F7F2;
+      color: #111;
+      border-radius: 6px;
+      padding: clamp(20px, 4vw, 48px);
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 520px;
+      justify-self: end;
+    }
+
+    .fifth-card h2{
+      font-size: clamp(24px, 3.2vw, 40px);
+      line-height: 1.15;
+      font-weight: 400;
+    }
+    .fifth-card h2 strong{ font-weight: 700; }
+
+    .fifth-details{
+      font-style: normal;           /* keep address upright */
+      color: #444;
+      line-height: 1.5;
+    }
+    .fifth-details a{
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,.2);
+    }
+    .fifth-details a:hover{
+      border-bottom-color: rgba(0,0,0,.5);
+    }
+
+    .fifth-btn{
+      align-self: flex-start;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .fifth-page::before,
+    .fifth-page::after{
+      content:"";
+      position:absolute; left:0; right:0; height:60px; pointer-events:none;
+    }
+    .fifth-page::before{
+      top:0;    background: linear-gradient(to top, #ffffff00 0%, #f7e6ce83 100%);
+    }
+    .fifth-page::after{
+      bottom:0; background: linear-gradient(to bottom, #ffffff00 0%, #f7e6ce83 100%);
+    }
+
+    /*section*/
+      section {
+        position: relative;
+        overflow: hidden;
+      }
+
+    /*background gradiants colours*/
+      .first-page::after,
+      .second-page::before,
+      .second-page::after,
+      .third-page::before,
+      .third-page::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100px;              /* fade depth */
+        pointer-events: none;       /* wont block clicks */
+        z-index: 0;                 /* makes it sit above everything */
+      }
+
+      .first-page::before,
+      .second-page::before,
+      .third-page::before {
+        top: 0;
+        background: linear-gradient(to top,
+                    #ffffff00 0%,
+                    #f7e6ce83 100%);
+      }
+
+      .first-page::after,
+      .second-page::after,
+      .third-page::after {
+        background: linear-gradient(to bottom,
+                    #ffffff00 0%,
+                    #f7e6ce83 100%);
+      }
+
+    /*background full colour*/
+      .first-page  { background-color: #F5EFE6; }
+      .second-page { background-color: #F5EFE6; } 
+      .third-page  { background-color: #F5EFE6; }
+
+    /* === Responsive (merged) === */
+
+    /* 980px and below: Featured grid -> 2 columns */
+    @media (max-width: 980px){
+      .third-wrapper{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .third-large{ grid-column: 1 / 2; grid-row: 1 / 3; }
+      .third-mid-top{ grid-column: 2 / 3; grid-row: 1 / 2; }
+      .third-mid-bottom{ grid-column: 2 / 3; grid-row: 2 / 3; }
+      .third-text{ grid-column: 1 / 3; grid-row: 3 / 4; align-items: flex-start; }
+    }
+
+    /* 900px and below: Contact page stacks */
+    @media (max-width: 900px){
+      .fifth-page{
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+      .fifth-img{ grid-column: 1; grid-row: 1; border-radius: 6px; }
+      .fifth-card{ grid-column: 1; grid-row: 2; justify-self: stretch; }
+    }
+
+    /* 768px and below: Intro stacks; Bio centres */
+    @media (max-width: 768px){
+      /* page 1 */
+      .first-page{ flex-direction: column; }
+      .right-panel img{ height: 50vh; }
+
+      /* page 2 */
+      .container{
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+      }
+      .image-section{
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      .text-biography h2{ font-size: 1.75rem; }
+    }
+
+    /* 640px and below: Featured grid -> 1 column */
+    @media (max-width: 640px){
+      .third-wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+      }
+      .third-large{ grid-column: 1; grid-row: 1; }
+      .third-mid-top{ grid-column: 1; grid-row: 2; }
+      .third-mid-bottom{ grid-column: 1; grid-row: 3; }
+      .third-text{ grid-column: 1; grid-row: 4; }
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <!-- 1st -->
+
+    <section class="first-page">
+    <div class="left-panel">
+      <h1 class="name-heading">
+        Hannah<br>
+        Powell
+      </h1>
+
+      <div class="portfolio-item">
+        <div class="portfolio-icon">*</div>
+        <div class="portfolio-text">
+          <span class="regular">Website</span>
+          <span class="bold">Portfolio</span>
+        </div>
+      </div>
+
+      <button class="btn square-btn">Get in Touch</button>
+      </div>
+
+
+    <div class="right-panel">
+      <img src="/Capstone Project/Images/Title.jpg" alt="Hannah Powell">
+    </div>
+
+    </section>
+
+
+  <!-- 2nd -->
+
+    <section class="second-page">
+
+    <div class="container">
+      <div class="text-biography">
+        <h2>Artist<br><strong>Biography</strong></h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <span class="asterisk">*</span>
+      </div>
+      <div class="image-section">
+        <img src="/Capstone Project/Images/artist biography.png" alt="Artist portrait">
+      </div>
+    </div>
+
+    </section>
+
+  <!-- 3rd -->
+
+    <section class="third-page">
+      <div class="third-wrapper">
+
+        <figure class="card third-large">
+          <img src="/Capstone Project/Images/Left Tall.webp">
+        </figure>
+
+        <figure class="card third-mid-top">
+          <img src="/Capstone Project/Images/Right Top.webp">
+        </figure>
+
+        <figure class="card third-mid-bottom">
+          <img src="/Capstone Project/Images/Right Bottom.webp">
+        </figure>
+
+        <aside class="third-text">
+          <h2>Featured<br>Work</h2>
+          <ul>
+            <li>01 blah</li>
+            <li>02 blah</li>
+            <li>03 blah</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+  <!-- 4th -->
+
+    <section class="fourth-page">
+
+      <img class="fourth-img" src="/Capstone Project/Images/Full Page Image.jpg">
+    
+      <blockquote class="fourth-quote">
+        <p>"Hannah has a unique style and is a true professional."</p>
+        <footer>Carrot, Client</footer>
+      </blockquote>
+    </section>
+
+  <!-- 5th -->
+
+  <section class="fifth-page">
+
+    <img class="fifth-img" src="/Capstone Project/Images/contact.png" alt="Portrait outdoors in autumn">
+  
+    <div class="fifth-card">
+      <h2>Get in<br><strong>Touch</strong></h2>
+  
+      <address class="fifth-details">
+        123 Anywhere St, Any City ST 12345<br>
+        <a href="mailto:hanienquiries@gmail.com">hanienquiries@gmail.com</a>
+      </address>
+  
+      <a class="btn square-btn fifth-btn" href="mailto:hanienquiries@gmail.com">
+        Send an email
+      </a>
+    </div>
+  </section>
+
+</body>
+
+</html>
