@@ -40,7 +40,6 @@
     }
 
     .name-heading {
-      font-family: Arial, Helvetica, sans-serif;
       font-size: clamp(48px, 7vw, 96px); 
       font-weight: 500;
       text-transform: uppercase;
@@ -93,7 +92,6 @@
     .square-btn:hover {
       color: #000;
       border-color: #6D94C5;
-      border-width: 1px;
     }
 
     .right-panel {
@@ -110,7 +108,7 @@
 
   /*2nd-------------------------------*/
 
-    .container {
+    .bio-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -168,7 +166,6 @@
       position: relative;
       overflow: hidden;
       min-height: 100vh;
-      background-color: #F5EFE6;
       display: grid;
       place-items: center;
       padding: 5vw 3vw;
@@ -177,22 +174,59 @@
     /* layout */
     .third-wrapper{
       width: 100%;
-      max-width: 1200px;
+      max-width: 1400px;
       display: grid;
-      grid-template-columns: 1.6fr 1fr 0.9fr; /* left / middle / right text */
+      grid-template-columns: 1.8fr 1.2fr 0.8fr; /* left / middle / right text */
       grid-template-rows: auto auto;          /* two rows for middle images */
-      gap: 24px;
+      gap: 0px;
       align-items: start;
     }
 
+    .third-wrapper:has(.third-text li:hover[data-target="#card1"]) #card1 .card-label,
+    .third-wrapper:has(.third-text li:hover[data-target="#card2"]) #card2 .card-label,
+    .third-wrapper:has(.third-text li:hover[data-target="#card3"]) #card3 .card-label {
+      opacity: 1;
+    }
+
     /* cards / images */
-    .card{ border-radius: 8px; overflow: hidden; transition: transform .25s ease; }
-    .card:hover{ transform: translateY(-3px); }
+    .card{
+      position: relative;          /* <-- make the card the positioning context */
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px); /* hover only changes the transform */
+    }
+
+    .card-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5);  /* subtle overlay */
+    color: #fff;
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+    z-index: 2;
+    }
 
     .card img{
       width: 100%; height: 100%; display: block; object-fit: cover;
       aspect-ratio: 3/4;              /* default portrait */
+        position: relative;
+  z-index: 1;
     }
+
+    .card:hover .card-label {
+  opacity: 1;
+  transform: translateY(0);
+}
 
     /* positions in grid */
     .third-large{ grid-column: 1 / 2; grid-row: 1 / 3; }  /* tall, spans both rows */
@@ -339,12 +373,6 @@
       content:"";
       position:absolute; left:0; right:0; height:60px; pointer-events:none;
     }
-    .fifth-page::before{
-      top:0;    background: linear-gradient(to top, #ffffff00 0%, #f7e6ce83 100%);
-    }
-    .fifth-page::after{
-      bottom:0; background: linear-gradient(to bottom, #ffffff00 0%, #f7e6ce83 100%);
-    }
 
     /*section*/
       section {
@@ -363,9 +391,9 @@
         left: 0;
         right: 0;
         bottom: 0;
-        height: 100px;              /* fade depth */
-        pointer-events: none;       /* wont block clicks */
-        z-index: 0;                 /* makes it sit above everything */
+        height: 100px;
+        pointer-events: none;
+        z-index: 0;
       }
 
       .first-page::before,
@@ -385,12 +413,8 @@
                     #f7e6ce83 100%);
       }
 
-    /*background full colour*/
-      .first-page  { background-color: #F5EFE6; }
-      .second-page { background-color: #F5EFE6; } 
-      .third-page  { background-color: #F5EFE6; }
 
-    /* === Responsive (merged) === */
+    /* Responsive */
 
     /* 980px and below: Featured grid -> 2 columns */
     @media (max-width: 980px){
@@ -421,7 +445,7 @@
       .right-panel img{ height: 50vh; }
 
       /* page 2 */
-      .container{
+      .bio-wrap{
         flex-direction: column;
         text-align: center;
         padding: 2rem;
@@ -456,7 +480,7 @@
     <div class="left-panel">
       <h1 class="name-heading">
         Hannah<br>
-        Powell
+        LastName
       </h1>
 
       <div class="portfolio-item">
@@ -467,12 +491,12 @@
         </div>
       </div>
 
-      <button class="btn square-btn">Get in Touch</button>
+      <button class="square-btn">Get in Touch</button>
       </div>
 
 
     <div class="right-panel">
-      <img src="Title.jpg" alt="Title Image">
+      <img src="Title.jpg" alt="Hannah Powell">
     </div>
 
     </section>
@@ -482,7 +506,7 @@
 
     <section class="second-page">
 
-    <div class="container">
+    <div class="bio-wrap">
       <div class="text-biography">
         <h2>Artist<br><strong>Biography</strong></h2>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
@@ -493,7 +517,7 @@
         <span class="asterisk">*</span>
       </div>
       <div class="image-section">
-        <img src="artist biography.png" alt="Biography Image">
+        <img src="artist biography.png" alt="Artist portrait">
       </div>
     </div>
 
@@ -504,26 +528,30 @@
     <section class="third-page">
       <div class="third-wrapper">
 
-        <figure class="card third-large">
-          <img src="Left Tall.webp" alt="Left Tall">
+        <figure class="card third-large" id="card1">
+          <span class="card-label">01</span>
+          <img src="Left Tall.webp" alt="Featured image 1">
         </figure>
 
-        <figure class="card third-mid-top">
-          <img src="Right Top.webp" alt="Right Top">
+        <figure class="card third-mid-top" id="card2">
+          <span class="card-label">02</span>
+          <img src="Right Top.webp" alt="Featured image 2">
         </figure>
 
-        <figure class="card third-mid-bottom">
-          <img src="Right Bottom.webp" alt="Right Bottom">
+        <figure class="card third-mid-bottom" id="card3">
+          <span class="card-label">03</span>
+          <img src="Right Bottom.webp" alt="Featured image 3">
         </figure>
 
         <aside class="third-text">
           <h2>Featured<br>Work</h2>
           <ul>
-            <li>01 blah</li>
-            <li>02 blah</li>
-            <li>03 blah</li>
+            <li data-target="#card1">01 blah</li>
+            <li data-target="#card2">02 blah</li>
+            <li data-target="#card3">03 blah</li>
           </ul>
         </aside>
+
       </div>
     </section>
 
@@ -531,7 +559,7 @@
 
     <section class="fourth-page">
 
-      <img class="fourth-img" src="Full Page Image.jpg" alt="Quote Image">
+      <img class="fourth-img" src="Full Page Image.jpg" alt="Full Page Image">
     
       <blockquote class="fourth-quote">
         <p>"Hannah has a unique style and is a true professional."</p>
@@ -543,7 +571,7 @@
 
   <section class="fifth-page">
 
-    <img class="fifth-img" src="contact.png" alt="Contact Image">
+    <img class="fifth-img" src="contact.png" alt="COntact page image">
   
     <div class="fifth-card">
       <h2>Get in<br><strong>Touch</strong></h2>
